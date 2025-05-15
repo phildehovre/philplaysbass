@@ -3,30 +3,23 @@ import cloudinary from 'cloudinary-video-player'
 import "cloudinary-video-player/cld-video-player.min.css"
 import './VideoPlayer.css'
 
-
-
 const VideoPlayer = () => {
     const [bgLoaded, setBgLoaded] = useState(false)
 
-
-  useEffect(() => {
-    const video = videoRef.current as HTMLImageElement | null;
-    if (!video) return;
-  
-    const handleLoad = () => setBgLoaded(true);
-  
-    if (video.complete) {
-      setBgLoaded(true);
-    } else {
-      video.addEventListener("load", handleLoad);
-      return () => {
-        video.removeEventListener("load", handleLoad);
-      };
-    }
-  }, []);
-
     const cloudinaryRef = useRef<any>(undefined)
     const videoRef = useRef<any>(undefined)
+
+  // useEffect(() => {
+  //   const video = videoRef.current as HTMLVideoElement | null;
+  //   if (!video) return;
+  
+  //   const handleLoad = () => setBgLoaded(true);
+  
+  //     video.addEventListener("loadedmetadata", handleLoad);
+  //     return () => {
+  //       video.removeEventListener("loadedmetadata", handleLoad);
+  //   }
+  // }, []);
 
     React.useEffect(() => {
         if (cloudinaryRef.current) return;
@@ -43,9 +36,7 @@ const VideoPlayer = () => {
 
   return (
     <div id='player_ctn'>
-        <video id='video_ctn' 
-        className={`${bgLoaded? 'loaded': ''}`}
-         ref={videoRef} data-cld-public-id="Portfolio - 2024/promo_intro_clean_web_export_-_720WebShareName_lmzz2h"/>
+        <video className={`video_ctn ${bgLoaded? 'loaded': ''}`} ref={videoRef} data-cld-public-id="Portfolio - 2024/promo_intro_clean_web_export_-_720WebShareName_lmzz2h"/>
     </div>
   )
 }
