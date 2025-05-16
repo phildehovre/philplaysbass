@@ -1,10 +1,9 @@
 #player_ctn {
+    position: fixed;
     aspect-ratio: 16/9;
     height: auto;
     min-height: 900px;
-
     width: 100svw;
-    position: relative;
     overflow: hidden;
     display: flex;
     justify-content: center;
